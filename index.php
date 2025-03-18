@@ -1,3 +1,4 @@
+Symbian youtube client.<br><br>
 <title>Youtube</title>
 <form action="index.php" method="POST">
 Поиск видеороликов на Youtube: <input type="text" name="videoname">
@@ -5,6 +6,13 @@
 </form>
 
 <?php
+echo "Количество yt-dlp + ffmpeg-тредов: ";
+echo shell_exec("ps -ax | grep ffmpeg | wc | awk ' { print $1-2 }'");
+echo "Загрузка CPU: ";
+echo shell_exec("top -b -n1 | grep \"Cpu(s)\" | awk '{print $2}'");
+echo "%";
+echo "<br><br>";
+
 $request = $_POST["videoname"];
 if (empty($request)){ die(); }
 $reqenc = urlencode($request);
