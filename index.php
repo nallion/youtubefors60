@@ -1,4 +1,4 @@
-Symbian youtube client. Youtube to rtsp gateway.<br><br>
+Youtube to rtsp gateway.<br><br>
 <title>Youtube</title>
 <form action="index.php" method="POST">
 Поиск видеороликов на Youtube: <input type="text" name="videoname">
@@ -6,9 +6,9 @@ Symbian youtube client. Youtube to rtsp gateway.<br><br>
 </form>
 
 <?php
-echo "Количество yt-dlp + ffmpeg-тредов: ";
-echo shell_exec("ps -ax | grep ffmpeg | wc | awk ' { print $1-2 }'");
-echo "Загрузка CPU: ";
+echo "Зрителей: ";
+echo shell_exec("ps -ax | grep ffmpeg | wc | awk ' { print $1-3 }'");
+echo "CPU: ";
 echo shell_exec("top -b -n1 | grep \"Cpu(s)\" | awk '{print $2}'");
 echo "%";
 echo "<br><br>";
