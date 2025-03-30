@@ -15,6 +15,8 @@ echo "<br>beta version";
 echo "<br><br>";
 
 $request = $_POST["videoname"];
+$request = preg_replace('/[^\p{Latin}\p{Cyrillic}0-9\s]/u', '', $request);
+$request = trim($request);
 if (empty($request)){ die(); }
 file_put_contents('/var/www/html/reqlog.txt', $request . "\r\n", FILE_APPEND);
 $reqenc = urlencode($request);
