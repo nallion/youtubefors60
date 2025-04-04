@@ -40,8 +40,8 @@ if (!$streamReady) {
 
 echo "<h2>Stream started!</h2>";
 echo "<br><a href=rtsp://tv.tg-gw.com:554/$idstream>Watch (link 1)</a> *554 port<br>";
-echo "<a href=rtsp://tv.tg-gw.com:443/$idstream>Watch (link 2)</a> *443 port, использовать, если не работает первая<br>";
-echo "<a href=rtsp://tv.tg-gw.com:8080/$idstream>Watch (link 3)</a> *8080 port, использовать, если не работают предыдущие<br>";
-echo "<a href=rtsp://tv.tg-gw.com:8554/$idstream>Watch (link 4)</a> *8554 можно попробовать и этот<br>";
+echo "<a href=rtsp://tv.tg-gw.com:3478/$idstream>Watch (link 2)</a> *3478 port, использовать, если не работает первая<br>";
+echo "<a href=rtsp://tv.tg-gw.com:8000/$idstream>Watch (link 3)</a> *8000 port, использовать, если не работают предыдущие<br>";
+echo "<a href=rtsp://tv.tg-gw.com:8554/$idstream>Watch (link 4)</a> *8554 port, можно попробовать и этот<br>";
 echo "<a href=index.php><font color=blue><<< back</font></a>";
 ?>
