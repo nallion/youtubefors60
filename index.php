@@ -7,7 +7,7 @@ Youtube Search: <input type="text" name="videoname">
 
 <?php
 echo "Current viewers: ";
-echo shell_exec("ps -ax | grep ffmpeg | wc | awk ' { print $1-2 }'");
+echo shell_exec("ps -ax | grep ffmpeg | wc | awk ' { print $1-4 }'");
 echo "CPU: ";
 echo shell_exec("top -b -n1 | grep \"Cpu(s)\" | awk '{print $2}'");
 echo "%";
@@ -16,6 +16,12 @@ echo "<br><br>";
 $request = $_POST["videoname"];
 $request = preg_replace('/[^\p{Latin}\p{Cyrillic}0-9\s]/u', '', $request);
 $request = trim($request);
+if (empty($request)){
+echo "Live Russian TV:<br>";
+echo "<a href=rtsp://tv.tg-gw.com/1channel>1Channel</a> <a href=rtsp://tv.tg-gw.com:8080/1channel>1Channel (alt)</a><br>";
+echo "<a href=rtsp://tv.tg-gw.com/russia24>Russia24</a> <a href=rtsp://tv.tg-gw.com:8080/russia24>Russia24 (alt)</a>";
+echo "<br><br>";
+}
 if (empty($request)){ die(); }
 file_put_contents('/var/www/html/reqlog.txt', $request . "\r\n", FILE_APPEND);
 $reqenc = urlencode($request);
