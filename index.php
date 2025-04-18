@@ -18,8 +18,8 @@ $request = preg_replace('/[^\p{Latin}\p{Cyrillic}0-9\s]/u', '', $request);
 $request = trim($request);
 if (empty($request)){
 echo "Live Russian TV:<br>";
-echo "<a href=rtsp://tv.tg-gw.com/1channel>1Channel</a> <a href=rtsp://tv.tg-gw.com:8080/1channel>1Channel (alt)</a><br>";
-echo "<a href=rtsp://tv.tg-gw.com/russia24>Russia24</a> <a href=rtsp://tv.tg-gw.com:8080/russia24>Russia24 (alt)</a>";
+echo "<a href=rtsp://139.28.223.207/1channel>1Channel</a> <a href=rtsp://139.28.223.207:8080/1channel>1Channel (alt)</a><br>";
+echo "<a href=rtsp://139.28.223.207/russia24>Russia24</a> <a href=rtsp://139.28.223.207:8080/russia24>Russia24 (alt)</a>";
 echo "<br><br>";
 }
 if (empty($request)){ die(); }
@@ -30,7 +30,7 @@ $idsarray = preg_split('/\s+/', trim($ids));
 foreach ($idsarray as $item) {
   if (++$i == 16) break;
   $videon = shell_exec("curl -s -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36' 'https://www.youtube.com/watch?v=$item' | grep -o -P '(?<=<title>).*(?=</title>)' | sed 's/- YouTube//g'");
-  $duration = shell_exec("curl -s 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=$item&key=AIzaSyCltlcU8GORC6k651YCCoiA8JeyCyhkiQU' | grep \"duration\" |  awk -F ' ' '{print $2}' | sed -e 's/\"PT//g' | sed -e 's/S\",/ Sec/g' | sed -e 's/H/ Hour:/g' | sed -e 's/M/ Min:/g' | sed -e 's/\"P0D\",/Live/g'");
+  $duration = shell_exec("curl -s 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=$item&key=API_KEY' | grep \"duration\" |  awk -F ' ' '{print $2}' | sed -e 's/\"PT//g' | sed -e 's/S\",/ Sec/g' | sed -e 's/H/ Hour:/g' | sed -e 's/M/ Min:/g' | sed -e 's/\"P0D\",/Live/g'");
   echo "<font color=blue><a href='stream.php?id=$item'>$videon</font></a>";
   echo "(";
   echo $duration;

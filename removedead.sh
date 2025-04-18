@@ -6,7 +6,7 @@ getpids=$(php /root/getviewers.php | grep -v rtspSession)
 # Loop through each pid retrieved
 for pid in $getpids; do
     # Get the actual process IDs of ffmpeg processes related to the PID
-    pids=$(ps -ax | grep "$pid" | grep "ffmpeg -re" | awk '{print $1}')
+    pids=$(ps -ax | grep "$pid" | grep "ffmpeg -threads 0 -re" | awk '{print $1}')
     # Check if there are any PIDs found and kill them
     if [ -n "$pids" ]; then
         kill $pids
